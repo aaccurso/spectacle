@@ -147,19 +147,22 @@ export default class Manager extends Component {
     const event = window.event ? window.event : e;
 
     if (
-      event.altKey && (
+      event.altKey &&
+      !event.shiftKey &&
+      (
         event.keyCode === 37 ||
-        event.keyCode === 33 ||
-        (event.keyCode === 32 && event.shiftKey)
+        event.keyCode === 33
       )
     ) {
       this._prevSlide();
       this._stopAutoplay();
     } else if (
-      event.altKey && (
+      event.altKey &&
+      !event.shiftKey &&
+      (
         event.keyCode === 39 ||
         event.keyCode === 34 ||
-        (event.keyCode === 32 && !event.shiftKey)
+        event.keyCode === 32
       )
     ) {
       this._nextSlide();
