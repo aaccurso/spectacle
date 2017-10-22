@@ -9,6 +9,8 @@ export default class Image extends Component {
     const styles = {
       width: this.props.width || '',
       height: this.props.height || '',
+      maxWidth: '100%',
+      maxHeight: '100%',
       display: this.props.display || ''
     };
     return (
@@ -18,8 +20,8 @@ export default class Image extends Component {
         style={[
           this.context.styles.components.image,
           getStyles.call(this),
-          styles,
-          this.props.style
+          this.props.style,
+          styles
         ]}
       />
     );

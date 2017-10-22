@@ -8,12 +8,15 @@ exports[`<Image /> should render correctly. 1`] = `
   width={2560}
 >
   <img
+    className={undefined}
     data-radium={true}
     src="foo.png"
     style={
       Object {
         "display": "inline-block",
         "height": 1440,
+        "maxHeight": "100%",
+        "maxWidth": "100%",
         "width": 2560,
       }
     }

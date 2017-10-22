@@ -41,7 +41,7 @@ export default class Heading extends Component {
   }
   render() {
     const { size, lineHeight, fit, style, children } = this.props;
-    const Tag = `H${size}`;
+    const Tag = `h${size}`;
     const styles = {
       container: {
         display: 'block',
@@ -79,7 +79,7 @@ export default class Heading extends Component {
       ) : (
         createElement(Tag, {
           className: this.props.className,
-          style: [this.context.styles.components.heading[`h${size}`], getStyles.call(this), styles.nonFit, style, typefaceStyle]
+          style: [this.context.styles.components.heading[`h${size}`], getStyles.call(this), styles.nonFit, typefaceStyle, style]
         }, children)
       )
     );

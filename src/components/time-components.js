@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import { keyframes } from 'emotion';
+import styled from 'react-emotion';
 
 export const Clock = styled.h2`
   position: relative;
@@ -24,15 +25,16 @@ export const TButtonContainer = styled.div`
 `;
 
 const fadeIn = keyframes`
-  from { 
-    opacity:0; 
-  } 
-  to { 
-    opacity:1; 
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 `;
 
-const vanishOut = keyframes `{
+const vanishOut = keyframes`
   from {
     opacity: 1;
     transform-origin: 50% 50%;
@@ -46,11 +48,12 @@ const vanishOut = keyframes `{
     transform: scale(2,2);
     filter: blur(2px);
   }
-}`;
+`;
 
 export const TSingleButton = styled.button`
   width: 68px;
   font-size: 1em;
+  font-family: "Open Sans Condensed";
   margin: 3px;
   border: 0;
   border-radius: 15px;
@@ -64,7 +67,7 @@ export const TSingleButton = styled.button`
         return '#darkgrey';
       }
     }};
-    
+
   &:focus{
     outline:0px;
   }

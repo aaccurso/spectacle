@@ -666,7 +666,7 @@ export default class Manager extends Component {
           : ''}
 
         {this.props.globalStyles &&
-          <Style rules={Object.assign(this.context.styles.global, globals)} />}
+          <Style rules={Object.assign({}, this.context.styles.global, globals)} />}
       </div>
     );
   }
