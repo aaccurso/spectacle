@@ -205,10 +205,10 @@ You can toggle the presenter or overview mode by pressing respectively `alt+p` a
 
 |Key Combination|Function|
 |---|---|
-|Right Arrow|Next Slide|
-|Left Arrow|Previous Slide|
-|Space|Next Slide|
-|Shift+Space|Previous Slide|
+|Alt/Option + Right Arrow|Next Slide|
+|Alt/Option + Left Arrow|Previous Slide|
+|Alt/Option + Space|Next Slide|
+|Alt/Option + Shift + Space|Previous Slide|
 |Alt/Option + O|Toggle Overview Mode|
 |Alt/Option + P|Toggle Presenter Mode|
 |Alt/Option + T|Toggle Timer in Presenter Mode|
