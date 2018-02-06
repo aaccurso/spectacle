@@ -21,14 +21,22 @@ class Appear extends Component {
       this.setState({ active: true });
       return;
     }
+
+    const order = this.props.order || 0;
+    const node = findDOMNode(this.fragmentRef);
+    if (!node.dataset) {
+      node.dataset = {};
+    }
+    node.dataset.order = order;
   }
 
   componentWillReceiveProps(nextProps) {
     const state = nextProps.fragment;
     const slide = this.props.route.slide;
     const fragment = findDOMNode(this.fragmentRef);
+    const slideHash = parseInt(this.context.slideHash);
     const key = findKey(state.fragments[slide], {
-      id: parseInt(fragment.dataset.fid),
+      id: `${slideHash}-${parseInt(fragment.dataset.fid)}`,
     });
 
     const shouldDisableAnimation =
@@ -54,7 +62,6 @@ class Appear extends Component {
     const child = React.Children.only(this.props.children);
     const endValue = this.state.active ? 1 : 0;
     const transitionDuration = this.props.transitionDuration;
-
     return (
       <VictoryAnimation
         data={{ opacity: endValue }}
@@ -63,8 +70,8 @@ class Appear extends Component {
       >
         {({ opacity }) =>
           React.cloneElement(child, {
-            className: 'fragment',
-            style: [child.props.style, this.props.style, opacity],
+            className: `fragment ${child.props.className}`.trim(),
+            style: { ...child.props.style, ...this.props.style, opacity },
             ref: f => {
               this.fragmentRef = f;
             },
@@ -81,6 +88,7 @@ Appear.defaultProps = {
 Appear.propTypes = {
   children: PropTypes.node,
   fragment: PropTypes.object,
+  order: PropTypes.number,
   route: PropTypes.object,
   style: PropTypes.object,
   transitionDuration: PropTypes.number
@@ -90,6 +98,7 @@ Appear.contextTypes = {
   export: PropTypes.bool,
   overview: PropTypes.bool,
   slide: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  slideHash: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   stepCounter: PropTypes.shape({
     setFragments: PropTypes.func
   })

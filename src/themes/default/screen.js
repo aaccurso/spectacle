@@ -1,5 +1,8 @@
 /*eslint-disable object-shorthand*/
 
+import prismLight from './prism.light';
+import prismDark from './prism.dark';
+
 const defaultColors = {
   primary: '#f9c300',
   secondary: 'black',
@@ -39,8 +42,17 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
         color: colors.secondary,
         overflow: 'hidden',
       },
+      '_:-moz-tree-row(hover), .spectacle-deck': {
+        perspective: '1000px'
+      },
+      '_:-moz-tree-row(hover), ul .appear': {
+        display: 'inline'
+      },
       'html, body': {
+        width: '100%',
         height: '100%',
+        margin: 0,
+        padding: 0
       },
       '*': {
         boxSizing: 'border-box',
@@ -90,6 +102,7 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
       },
       prevIcon: {
         fill: colors.quarternary,
+        transition: 'fill 1s ease-in-out 0.2s',
       },
       next: {
         position: 'absolute',
@@ -103,7 +116,12 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
       },
       nextIcon: {
         fill: colors.quarternary,
+        transition: 'fill 1s ease-in-out 0.2s',
       },
+    },
+    prism: {
+      light: prismLight,
+      dark: prismDark,
     },
     progress: {
       pacman: {
@@ -128,6 +146,7 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
           height: '10px',
           borderTopLeftRadius: '10px',
           borderTopRightRadius: '10px',
+          transition: 'all 0.3s ease-out',
           background: colors.quarternary,
         },
         pacmanBottom: {
@@ -138,6 +157,7 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
           borderBottomLeftRadius: '10px',
           borderBottomRightRadius: '10px',
           background: colors.quarternary,
+          transition: 'all 0.3s ease-out',
           top: '10px',
         },
         point: {
@@ -150,7 +170,7 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
           borderStyle: 'solid',
           borderColor: colors.quarternary,
           borderRadius: '50%',
-          transition: 'all 0.01s ease-out 0.4s',
+          transition: 'all 0.3s ease-out',
         },
       },
       bar: {
@@ -176,6 +196,7 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
           right: 10,
           zIndex: 1000,
           color: colors.quarternary,
+          transition: 'all 0.3s ease-out',
         },
       },
     },
@@ -207,18 +228,25 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
         textAlign: 'center',
       },
       codePane: {
-        pre: {
-          margin: 'auto',
-          fontSize: '0.8rem',
-          fontWeight: 'normal',
-          fontFamily: fonts.tertiary,
-          minWidth: '100%',
-          maxWidth: 800,
-        },
-        code: {
-          textAlign: 'left',
-          fontWeight: 'normal',
-        },
+        margin: 'auto',
+        fontSize: '0.8rem',
+        fontWeight: 'normal',
+        minWidth: '100%',
+        maxWidth: 800,
+      },
+      syntax: {
+        fontFamily: fonts.tertiary,
+        fontSize: 'inherit',
+        lineHeight: 1.5,
+        direction: 'ltr',
+        textAlign: 'left',
+        wordSpacing: 'normal',
+        wordBreak: 'normal',
+        tabSize: 2,
+        hyphens: 'none',
+        whiteSpace: 'pre-wrap',
+        padding: '0.5rem',
+        margin: 0,
       },
       code: {
         color: 'black',
@@ -228,6 +256,18 @@ const screen = (colorArgs = defaultColors, fontArgs = defaultFonts) => {
         backgroundColor: 'rgba(0,0,0,0.15)',
         padding: '0 10px',
         borderRadius: 3,
+      },
+      goToAction: {
+        borderRadius: '6px',
+        fontFamily: fonts.primary,
+        padding: '0.25em 1em',
+        border: 'none',
+        background: '#000',
+        color: '#fff',
+        '&:hover': {
+          background: colors.tertiary,
+          color: '#000'
+        }
       },
       heading: {
         h1: {

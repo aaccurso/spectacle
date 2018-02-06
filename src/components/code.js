@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getStyles } from '../utils/base';
-import Radium from 'radium';
+import styled from 'react-emotion';
 
 const format = (str) => {
   return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 };
 
-@Radium
+const StyledCode = styled.code(props => props.styles);
+
 export default class Code extends Component {
   createMarkup() {
     return {
-      __html: format(this.props.children)
+      __html: Array.isArray(this.props.children) ? this.props.children.map(format) : format(this.props.children)
     };
   }
   render() {
+    const styles = [
+      this.context.styles.components.code,
+      getStyles.call(this),
+      this.props.style
+    ];
     return (
-      <code
+      <StyledCode
         className={this.props.className}
-        style={[this.context.styles.components.code, getStyles.call(this), this.props.style]}
+        styles={styles}
         dangerouslySetInnerHTML={this.createMarkup()}
       />
     );

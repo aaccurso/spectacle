@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { createElement, Component } from 'react';
 import PropTypes from 'prop-types';
+import { getStyles } from '../utils/base';
 import marksy from 'marksy';
+import styled from 'react-emotion';
 
 import BlockQuote from './block-quote';
 import CodePane from './code-pane';
@@ -22,6 +24,8 @@ import TableBody from './table-body';
 import TableItem from './table-item';
 
 
+const Container = styled.div(props => props.styles);
+
 const _Heading = size => {
   const component = ({ children }) => <Heading size={size}>{children}</Heading>;
   component.propTypes = { children: PropTypes.node };
@@ -39,11 +43,15 @@ const _CombineBlockQuote = ({ children }) => (
 );
 _CombineBlockQuote.propTypes = { children: PropTypes.node };
 
+const _CodePane = ({ language, code }) => <CodePane lang={language} source={code}/>;
+_CodePane.propTypes = { source: PropTypes.string, lang: PropTypes.string };
+
 const compile = marksy({
+  createElement,
   elements: {
     a: Link,
     blockquote: _CombineBlockQuote,
-    code: CodePane,
+    code: _CodePane,
     del: _S('strikethrough'),
     em: _S('italic'),
     h1: _Heading(1),
@@ -74,23 +82,34 @@ export default class Markdown extends Component {
     style: PropTypes.object
   };
 
+  static contextTypes = {
+    styles: PropTypes.object,
+    store: PropTypes.object,
+    typeface: PropTypes.object
+  };
+
   static defaultProps = {
     style: {},
   };
 
   render() {
     const { style, children, source } = this.props;
+    const styleComputed = [
+      getStyles.call(this),
+      style
+    ];
+
     if (source) {
       return (
-        <div style={style}>
+        <Container styles={styleComputed}>
           {compile(source).tree}
-        </div>
+        </Container>
       );
     }
     return (
-      <div style={style}>
+      <Container styles={styleComputed}>
         {compile(children).tree}
-      </div>
+      </Container>
     );
   }
 }

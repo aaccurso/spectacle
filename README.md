@@ -22,6 +22,7 @@ ReactJS based Presentation Library
   - [Main file](#main-file)
   - [Themes](#themes)
     - [createTheme(colors, fonts)](#createthemecolors-fonts)
+- [FAQ](#faq)
 - [Tag API](#tag-api)
   - [Main Tags](#main-tags)
     - [Deck](#deck)
@@ -34,12 +35,15 @@ ReactJS based Presentation Library
     - [Fill](#fill)
   - [Markdown Tag](#markdown-tag)
     - [Markdown](#markdown)
+  - [Magic Tag](#magic-tag)
+    - [Magic](#magic)
   - [Element Tags](#element-tags)
     - [Appear](#appear)
     - [BlockQuote, Quote and Cite (Base)](#blockquote-quote-and-cite-base)
     - [CodePane (Base)](#codepane-base)
     - [Code (Base)](#code-base)
     - [ComponentPlayground](#component-playground)
+    - [GoToAction (Base)](#go-to-action)
     - [Heading (Base)](#heading-base)
     - [Image (Base)](#image-base)
     - [Link (Base)](#link-base)
@@ -123,14 +127,10 @@ We can start with this project's sample at [`one-page.html`](./one-page.html). I
     <title>Spectacle</title>
     <link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
-    <link href="https://unpkg.com/prismjs@1/themes/prism-tomorrow.css" rel="stylesheet" type="text/css">
     <link href="https://unpkg.com/normalize.css@7/normalize.css" rel="stylesheet" type="text/css">
-    <link href="https://unpkg.com/spectacle/lib/themes/default/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div id="root"></div>
-    <script src="https://unpkg.com/prismjs@1/prism.js"></script>
-    <script src="https://unpkg.com/prismjs@1/components/prism-jsx.min.js"></script>
     <script src="https://unpkg.com/prop-types@15/prop-types.js"></script>
     <script src="https://unpkg.com/react@15/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
@@ -222,7 +222,21 @@ Fullscreen can be toggled via browser options, or by **hovering over the bottom 
 <a name="pdf-export"></a>
 ## PDF Export
 
-Exporting a totally sweet looking PDF from your totally sweet looking Spectacle presentation is absurdly easy.
+Exporting a totally sweet looking PDF from your totally sweet looking Spectacle presentation is absurdly easy. You can either do this via the browser, or from the command line:
+
+#### CLI
+
+- Run `npm install spectacle-renderer -g`
+- Run `npm start` on your project and wait for it to build and be available
+- Run `spectacle-renderer`
+- A totally cool PDF is created in your project directory
+
+For more options and configuration of this tool, check out:
+
+[https://github.com/FormidableLabs/spectacle-renderer](https://github.com/FormidableLabs/spectacle-renderer)
+
+
+#### Browser
 
 - Run `npm start`
 - Open [http://localhost:3000/](http://localhost:3000/)
@@ -287,7 +301,7 @@ import createTheme from "spectacle/lib/themes/default";
 
 Or create your own based upon the source.
 
-`index.js` is what you would edit in order to create a custom theme of your own, using ReactJS style inline style objects.
+`index.js` is what you would edit in order to create a custom theme of your own, using object based styles.
 
 You will want to edit `index.html` to include any web fonts or additional CSS that your theme requires.
 
@@ -307,6 +321,43 @@ const theme = createTheme({
 ```
 
 The returned theme object can then be passed to the `Deck` tag via the `theme` prop, and will override the default styles.
+
+<a name="faq"></a>
+## FAQ
+
+_How can I easily style the base components for my presentation?_
+
+Historically, custom styling in Spectacle has meant screwing with a theme file, or using gross `!important` overrides. We fixed that. Spectacle is now driven by [emotion](github.com/emotion-js/emotion), so you can bring your own styling library, whether its emotion itself, or something like styled-components or glamorous. For example, if you want to create a custom Heading style:
+
+```javascript
+import styled from 'styled-components';
+import { Heading } from 'spectacle';
+
+const CustomHeading = styled(Heading)`
+  font-size: 1.2em;
+  color: papayawhip;
+`;
+```
+
+_How can I separate my slides into other files?_
+
+Until this release, you would have to do some array shenanigans, but now you can just wrap those slides with an element that has a special prop:
+
+```javascript
+// mySlides.js
+export default class mySlides extends Component {
+  render() {
+    return (
+      <div hasSlideChildren>
+        <Slide>1</Slide>
+        <Slide>2</Slide>
+        <Slide>3</Slide>
+      </div>
+    )
+  }
+}
+
+```
 
 <a name="tag-api"></a>
 ## Tag API
@@ -342,12 +393,45 @@ The slide tag represents each slide in the presentation. Giving a slide tag an `
 |Name|PropType|Description|
 |---|---|---|
 |align| PropTypes.string | Accepts a space delimited value for positioning interior content. The first value can be `flex-start` (left), `center` (middle), or `flex-end` (right). The second value can be `flex-start` (top) , `center` (middle), or `flex-end` (bottom). You would provide this prop like `align="center center"`, which is its default.
+|controlColor| PropTypes.string | Used to override color of control arrows on a per slide basis, accepts color aliases, or valid color values.
+|goTo| PropTypes.number | Used to navigate to a slide for out-of-order presenting. Slide numbers start at `1`. This can also be used to skip slides as well.
 |id| PropTypes.string | Used to create a string based hash.
 |maxHeight| PropTypes.number | Used to set max dimensions of the Slide.
 |maxWidth| PropTypes.number | Used to set max dimensions of the Slide.
 |notes| PropTypes.string| Text which will appear in the presenter mode. Can be HTML.
-|transition|PropTypes.array|Accepts `slide`, `zoom`, `fade` or `spin`, and can be combined. Sets the slide transition. **Note: If you use the 'scale' transition, fitted text won't work in Safari.**|
+|onActive|PropTypes.func| Optional function that is called with the slide index when the slide comes into view.
+|progressColor| PropTypes.string | Used to override color of progress elements on a per slide basis, accepts color aliases, or valid color values.
+|transition|PropTypes.array|Accepts `slide`, `zoom`, `fade`, `spin`, or a [function](#transition-function), and can be combined. Sets the slide transition. This will affect both enter and exit transitions. **Note: If you use the 'scale' transition, fitted text won't work in Safari.**|
+|transitionIn|PropTypes.array|Specifies the slide transition when the slide comes into view. Accepts the same values as transition.|
+|transitionOut|PropTypes.array|Specifies the slide transition when the slide exits. Accepts the same values as transition.|
 |transitionDuration| PropTypes.number| Accepts integer value in milliseconds for slide transition duration.
+
+<a name="wrapping-slides"></a>
+##### Wrapping Slides
+
+If you author your slides in another file or want any kind of grouping that requires one additional level of nesting, you can add a `hasSlideChildren` prop to their parent element. This lets Spectacle identify that it is a wrapper, and will disregard the heirarchy instead opting to read the child slides as if the wrapper was not present.
+
+<a name="transition-function"></a>
+##### Transition Function
+Spectacle now supports defining custom transitions. The function prototype is `(transitioning: boolean, forward: boolean) => Object`. The `transitioning` param is true when the slide enters and exits. The `forward` param is `true` when the slide is entering, `false` when the slide is exiting. The function returns a style object. You can mix string-based transitions and functions. Styles provided when `transitioning` is `false` will appear during the lifecyle of the slide. An example is shown below:
+
+```jsx
+<Slide
+  transition={[
+    'fade',
+    (transitioning, forward) => {
+      const angle = forward ? -180 : 180;
+      return {
+        transform: `
+          translate3d(0%, ${transitioning ? 100 : 0}%, 0)
+          rotate(${transitioning ? angle : 0}deg)
+        `,
+        backgroundColor: transitioning ? '#26afff' : '#000'
+      };
+    }
+  ]}
+>
+```
 
 <a name="notes"></a>
 #### Notes
@@ -389,7 +473,7 @@ Slide Content
 **Function Usage**
 
 ```jsx
-import slidesMarkdown from "raw!markdown.md";
+import slidesMarkdown from "raw-loader!markdown.md";
 
 <Deck ...>
   {MarkdownSlides(slidesMarkdown)}
@@ -420,7 +504,7 @@ The fill tag takes up all the space available to it. For example, if you have a 
 ### Markdown Tag
 
 <a name="markdown"></a>
-#### Markdown
+#### Markdown (Base)
 
 The Markdown tag is used to add inline markdown to your slide. You can provide markdown source via the `source` prop, or as children. You can also provide a custom [mdast configuration](https://github.com/wooorm/mdast) via the `mdastConfig` prop.
 
@@ -429,6 +513,29 @@ Markdown generated tags aren't prop configurable, and instead render with your t
 |Name|PropType|Description|
 |---|---|---|
 |source|PropTypes.string| Markdown source |
+
+<a name="magic-tag"></a>
+### Magic Tag
+
+<a name="Magic"></a>
+#### Magic
+
+> NOTE: The Magic tag uses the Web Animations API. If you use the Magic tag and want it to work places other than Chrome, you will need to include the polyfill [https://github.com/web-animations/web-animations-js](https://github.com/web-animations/web-animations-js)
+
+The Magic Tag is a new experimental feature that attempts to recreate Magic Move behavior that slide authors might be accustomed to coming from Keynote. It wraps slides, and transitions between positional values for child elements. This means that if you have two similar strings, we will transition common characters to their new positions. This does not transition on non positional values such as slide background color or font size.
+
+Using Magic is pretty simple, you just wrap your slides with it, and it transitions between them:
+
+```javascript
+<Magic>
+  <Slide><Heading>First Heading</Heading></Slide>
+  <Slide><Heading>Second Heading</Heading></Slide>
+</Magic>
+```
+
+Transitioning between similar states will vary based upon the input content. It will look better when there are more common elements. An upcoming patch will allow for custom keys, which will provide greater control over which elements are identified as common for reuse.
+
+Until then, feedback is very welcome, as this is a non-trivial feature and we anticipate iterating on the behind the scenes mechanics of how it works, so that we can accommodate most use cases.
 
 <a name="element-tags"></a>
 ### Element Tags
@@ -439,6 +546,11 @@ The element tags are the bread and butter of your slide content. Most of these t
 #### Appear
 
 This tag does not extend from Base. It's special. Wrapping elements in the appear tag makes them appear/disappear in order in response to navigation.
+
+|Name|PropType|Description|
+|---|---|---|
+|order|PropTypes.number| An optional integer starting at 1 for the presentation order of the Appear tags within a slide. If a slide contains ordered and unordered Appear tags, the unordered will show first.
+
 
 <a name="blockquote-quote-and-cite-base"></a>
 #### BlockQuote, Quote and Cite (Base)
@@ -462,7 +574,7 @@ This tag displays a styled, highlighted code preview. I prefer putting my code s
 |lang|PropTypes.string| Prism compatible language name. i.e: 'javascript' |
 |source| PropTypes.string| String of code to be shown |
 
-You can change your syntax highlighting theme by swapping the prism.js CSS file in `index.html`
+If you want to change the theme used here, you can include a prism theme in index.html via a script tag. CodePane and Playground both use the prism library under the hood, which has several themes that are available to include.
 
 <a name="code-base"></a>
 #### Code (Base)
@@ -472,8 +584,9 @@ A simple tag for wrapping inline text that you want lightly styled in a monospac
 <a name="component-playground"></a>
 #### Component Playground
 
-This tag displays a two-pane view with a ES6 source code editor on the right and a preview pane on the left for showing off custom React components. `React` and `render` from `ReactDOM` are supplied as variables. To render a component use the domContainer `mountNode`. Any `console` output will be forwarded to the main console in the browser.
+This tag displays a two-pane view with a ES6 source code editor on the right and a preview pane on the left for showing off custom React components. `React` and `render` are supplied as variables. To render a component call `render` with some JSX code. Any `console` output will be forwarded to the main console in the browser.
 
+For more information on the playground read the docs over at [react-live](https://github.com/FormidableLabs/react-live).
 
 |Name|PropType|Description|
 |---|---|---|
@@ -486,7 +599,7 @@ Example code blocks:
 
 ```jsx
 const Button = ({ title }) => (<button type="button">{ title }</button>);
-render(<Button title="My Button" />, mountNode);
+render(<Button title="My Button" />);
 ```
 
 ```jsx
@@ -499,8 +612,36 @@ class View extends React.Component {
     return (<div>My View</div>);
   }
 }
-render(<View />, mountNode);
+render(<View />);
 ```
+
+<a name="go-to-action"></a>
+#### Go To Action (Base)
+
+The GoToAction tag lets you jump to another slide in your deck. The GoToAction can be used a simple button that supports `Base` styling or accept a render prop with a callback to support custom components.
+
+|Name|PropType|Description|
+|---|---|---|
+|slide|PropTypes.string or PropTypes.number|The string identifier or number of the side the button should jump to. Slide numbers start at `1`. This is only used in the simple button configuration.
+|render|PropTypes.func|A function with a `goToSlide` param that should return a React element to render. This is only used in the custom component configuration.
+
+##### Simple Button Configuration Example
+```jsx
+<GoToAction slide={3}>Jump to 3</GoToAction>
+```
+
+##### Custom Component Configuration Example
+```jsx
+<GoToAction
+  render={goToSlide => (
+    <CustomComponent onClick={() => goToSlide("wait-wut")}>
+      WAIT WUT!?
+    </CustomComponent>
+  )}
+/>
+```
+
+
 
 <a name="heading-base"></a>
 #### Heading (Base)
@@ -517,6 +658,7 @@ Heading tags are special in that, when you specify a `size` prop, they generate 
 
 |Name|PropType|Description|
 |---|---|---|
+|alt|PropTypes.string| Set the `alt` property of the image|
 |display|PropTypes.string| Set the display style property of the image |
 |height|PropTypes.string or PropTypes.number| Supply a height to the image |
 |src|PropTypes.string| Image src |
@@ -567,7 +709,7 @@ Unordered lists:
 <a name="s-base"></a>
 #### S (Base)
 
-The `S` tag is used to add inline styling to a piece of text, such as underline or strikethrough.
+The `S` tag is used to add styling to a piece of text, such as underline or strikethrough.
 
 |Name|PropType|Description|
 |---|---|---|
@@ -622,12 +764,18 @@ Every component above that has `(Base)` after it has been extended from a common
 | margin | PropTypes.number or string | Set `margin` value|
 | padding | PropTypes.number or string | Set `padding` value|
 | textColor | PropTypes.string | Set `color` value|
+| textFont | PropTypes.string | Set `fontFamily` value|
 | textSize | PropTypes.string | Set `fontSize` value|
 | textAlign | PropTypes.string | Set `textAlign` value|
 | textFont | PropTypes.string | Set `textFont` value|
 | bgColor | PropTypes.string | Set `backgroundColor` value|
 | bgImage | PropTypes.string | Set `backgroundImage` value|
+| bgSize | PropTypes.string | Set `backgroundSize` value|
+| bgPosition | PropTypes.string | Set `backgroundPosition` value|
+| bgRepeat | PropTypes.string | Set `backgroundRepeat` value|
 | bgDarken | PropTypes.number | Float value from 0.0 to 1.0 specifying how much to darken the bgImage image|
+| overflow | PropTypes.string | Set `overflow` value|
+| height | PropTypes.string | Set `height` value|
 
 <a name="typeface"></a>
 #### Typeface

@@ -9,10 +9,12 @@ import { Fill } from './components/fill';
 import { Fit } from './components/fit';
 import Heading from './components/heading';
 import Image from './components/image';
+import GoToAction from './components/go-to-action';
 import Layout from './components/layout';
 import Link from './components/link';
 import ListItem from './components/list-item';
 import List from './components/list';
+import Magic from './components/magic';
 import Markdown from './components/markdown';
 import MarkdownSlides from './components/markdown-slides';
 import Notes from './components/notes';
@@ -48,10 +50,12 @@ export {
   Fit,
   Heading,
   Image,
+  GoToAction,
   Layout,
   Link,
   ListItem,
   List,
+  Magic,
   Markdown,
   MarkdownSlides,
   Notes,

@@ -3,7 +3,7 @@ import React from 'react';
 import {
   Appear, BlockQuote, Cite, CodePane, ComponentPlayground, Deck, Fill,
   Heading, Image, Layout, Link, ListItem, List, Markdown, MarkdownSlides, Quote, Slide, SlideSet,
-  TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table, Text
+  TableBody, TableHeader, TableHeaderItem, TableItem, TableRow, Table, Text, GoToAction
 } from '../../src';
 
 import preloader from '../../src/utils/preloader';
@@ -13,7 +13,6 @@ import createTheme from '../../src/themes/default';
 import Interactive from '../assets/interactive';
 
 require('normalize.css');
-require('../../src/themes/default/index.css');
 
 const images = {
   city: require('../assets/city.jpg'),
@@ -57,13 +56,39 @@ export default class Presentation extends React.Component {
           </Link>
           <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
         </Slide>
-        <Slide id="wait-what" transition={['slide']} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
+        <Slide
+          onActive={slideIndex => {
+            console.info(`Viewing slide index: ${slideIndex}.`); // eslint-disable-line no-console
+          }}
+          id="wait-what"
+          goTo={4}
+          transition={[
+            'fade',
+            (transitioning, forward) => {
+              const angle = forward ? -180 : 180;
+              return {
+                transform: `
+                  translate3d(0%, ${transitioning ? 100 : 0}%, 0)
+                  rotate(${transitioning ? angle : 0}deg)
+                `,
+                backgroundColor: transitioning ? '#26afff' : '#000'
+              };
+            }
+          ]}
+          bgColor="black"
+          notes="You can even put notes on your slide. How awesome is that?"
+        >
           <Image src={images.kat.replace('/', '')} margin="0px auto 40px" />
           <Heading size={2} caps fit textColor="primary" textFont="primary">
             Wait what?
           </Heading>
         </Slide>
-        <Slide transition={['zoom', 'fade']} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
+        <Slide
+          transitionIn={['zoom', 'fade']}
+          transitionOut={['slide', 'fade']}
+          bgColor="primary"
+          notes="<ul><li>talk about that</li><li>and that</li></ul>"
+        >
           <CodePane
             lang="jsx"
             source={require('raw-loader!../assets/deck.example')}
@@ -71,7 +96,7 @@ export default class Presentation extends React.Component {
             overflow = "overflow"
           />
         </Slide>
-        <Slide>
+        <Slide goTo={3}>
           <ComponentPlayground
             theme="dark"
           />
@@ -92,6 +117,38 @@ export default class Presentation extends React.Component {
               Background Imagery
             </Heading>
           </Appear>
+        </Slide>
+        <Slide>
+          <Heading size={2} textColor="secondary" margin="0.25em">
+           Mix it up!
+          </Heading>
+          <Heading size={6} textColor="tertiary">
+            You can even jump to different slides with a standard button or custom component!
+          </Heading>
+          <GoToAction
+            margin="1em"
+            slide={8}
+          >
+            Jump to Slide 8
+          </GoToAction>
+          <GoToAction
+            render={goToSlide => (
+              <select
+                defaultValue=""
+                style={{
+                  background: '#000',
+                  color: '#fff',
+                  fontFamily: theme.print.fonts.primary,
+                  fontSize: '1.1em'
+                }}
+                onChange={({ target }) => goToSlide(target.value)}
+              >
+                <option value="" disabled>Custom Slide Picker</option>
+                <option value="wait-what">Wait What!? Slide</option>
+                <option value={3}>Slide 3</option>
+              </select>
+            )}
+          />
         </Slide>
         <Slide transition={['slide']} bgDarken={0.75} getAppearStep={this.updateSteps}>
           <Appear>
@@ -134,7 +191,7 @@ export default class Presentation extends React.Component {
             <Cite>Ken Wheeler</Cite>
           </BlockQuote>
         </Slide>
-        <Slide transition={['spin', 'zoom']} bgColor="tertiary">
+        <Slide transition={['spin', 'zoom']} bgColor="tertiary" controlColor="primary" progressColor="primary">
           <Heading caps fit size={1} textColor="primary">
             Inline Markdown
           </Heading>
@@ -146,6 +203,7 @@ export default class Presentation extends React.Component {
   * Lists too!
   * With ~~strikethrough~~ and _italic_
   * And let's not forget **bold**
+  * Add some \`inline code\` to your sldes!
             `}
           </Markdown>
         </Slide>
@@ -157,6 +215,12 @@ All the same tags and elements supported in <Markdown /> are supported in Markdo
 Slides are separated with **three dashes** and can be used _anywhere_ in the deck. The markdown can either be:
 * A Tagged Template Literal
 * Imported Markdown from another file
+---
+Add some inline code to your markdown!
+
+\`\`\`js
+const myCode = (is, great) => 'for' + 'sharing';
+\`\`\`
           `
         }
         <Slide transition={['slide', 'spin']} bgColor="primary">
