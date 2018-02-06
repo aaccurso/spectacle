@@ -7,12 +7,10 @@ exports[`<Controls /> should render correctly. 1`] = `
   onPrev={[Function]}
   totalSlides={5}
 >
-  <div
-    data-radium={true}
-  >
+  <div>
     <button
-      data-radium={true}
-      key=".$prev"
+      aria-label="Previous slide"
+      key="prev"
       onClick={[Function]}
       style={
         Object {
@@ -22,8 +20,10 @@ exports[`<Controls /> should render correctly. 1`] = `
       type="button"
     >
       <svg
+        focusable="false"
         height="32px"
         key="prevIcon"
+        role="presentation"
         style={undefined}
         viewBox="0 0 512 828.586"
         width="32px"
@@ -34,8 +34,8 @@ exports[`<Controls /> should render correctly. 1`] = `
       </svg>
     </button>
     <button
-      data-radium={true}
-      key=".$next"
+      aria-label="Next slide"
+      key="next"
       onClick={[Function]}
       style={
         Object {
@@ -45,8 +45,10 @@ exports[`<Controls /> should render correctly. 1`] = `
       type="button"
     >
       <svg
+        focusable="false"
         height="32px"
         key="nextIcon"
+        role="presentation"
         style={undefined}
         viewBox="0 0 512 828.586"
         width="32px"

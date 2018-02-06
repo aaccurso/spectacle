@@ -1,34 +1,51 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { getStyles } from '../utils/base';
-import Radium from 'radium';
-import isUndefined from 'lodash/isUndefined';
+import styled from 'react-emotion';
 
-const format = (str) => {
-  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-};
+import '../utils/prism-import';
+import { Editor } from 'react-live';
 
-@Radium
+const StyledWrapper = styled.div(props => props.styles);
+const StyledEditor = styled(({ syntaxStyles: _, prismTheme: __, ...rest }) => <Editor {...rest} />)`
+  && {
+    ${props => props.syntaxStyles}
+  }
+
+  ${props => props.prismTheme}
+`;
+
 export default class CodePane extends Component {
-  componentDidMount() {
-    return window.Prism && window.Prism.highlightAll();
+  handleEditorEvent(evt) {
+    evt.stopPropagation();
   }
-  createMarkup() {
-    const { source, children } = this.props;
-    const code = (isUndefined(source) || source === '') ? children : source;
-    return {
-      __html: format(code)
-    };
-  }
+
   render() {
+    const useDarkTheme = this.props.theme === 'dark';
+
+    const wrapperStyles = [
+      this.context.styles.components.codePane,
+      getStyles.call(this),
+      this.props.style
+    ];
+
     return (
-      <pre className={this.props.className} style={[this.context.styles.components.codePane.pre, getStyles.call(this), this.props.style]}>
-        <code
-          className={`language-${this.props.lang}`}
-          style={this.context.styles.components.codePane.code}
-          dangerouslySetInnerHTML={this.createMarkup()}
+      <StyledWrapper
+        className={this.props.className}
+        styles={wrapperStyles}
+      >
+        <StyledEditor
+          className="language-prism"
+          code={this.props.source}
+          language={this.props.lang}
+          contentEditable={this.props.contentEditable}
+          syntaxStyles={this.context.styles.components.syntax}
+          prismTheme={this.context.styles.prism[useDarkTheme ? 'dark' : 'light']}
+          onKeyDown={this.handleEditorEvent}
+          onKeyUp={this.handleEditorEvent}
+          onClick={this.handleEditorEvent}
         />
-      </pre>
+      </StyledWrapper>
     );
   }
 }
@@ -41,12 +58,17 @@ CodePane.contextTypes = {
 CodePane.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  contentEditable: PropTypes.bool,
   lang: PropTypes.string,
   source: PropTypes.string,
-  style: PropTypes.object
+  style: PropTypes.object,
+  theme: PropTypes.string,
 };
 
 CodePane.defaultProps = {
+  theme: 'dark',
+  className: '',
+  contentEditable: false,
   lang: 'markup',
-  source: ''
+  source: '',
 };

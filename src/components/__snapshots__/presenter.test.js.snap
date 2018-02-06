@@ -48,11 +48,9 @@ exports[`<Presenter /> should render correctly 1`] = `
             <h2
               className="css-1wa77gy"
             >
-              Slide
-               
+              Slide 
               2
-               
-              of
+               of
                
               3
             </h2>
@@ -98,6 +96,7 @@ exports[`<Presenter /> should render correctly 1`] = `
                     hash={1}
                     key="1"
                     lastSlideIndex={undefined}
+                    presenter={true}
                     presenterStyle={
                       Object {
                         "position": "relative",
@@ -107,6 +106,8 @@ exports[`<Presenter /> should render correctly 1`] = `
                     slideIndex={1}
                     transition={Array []}
                     transitionDuration={0}
+                    transitionIn={Array []}
+                    transitionOut={Array []}
                   >
                     <div>
                       Slide Content
@@ -125,6 +126,7 @@ exports[`<Presenter /> should render correctly 1`] = `
                     hash={2}
                     key="2"
                     lastSlideIndex={undefined}
+                    presenter={true}
                     presenterStyle={
                       Object {
                         "position": "relative",
@@ -134,6 +136,8 @@ exports[`<Presenter /> should render correctly 1`] = `
                     slideIndex={2}
                     transition={Array []}
                     transitionDuration={0}
+                    transitionIn={Array []}
+                    transitionOut={Array []}
                   >
                     <div>
                       Slide Content
@@ -208,11 +212,9 @@ exports[`<Presenter /> should render timer when set in params. 1`] = `
             <h2
               className="css-1wa77gy"
             >
-              Slide
-               
+              Slide 
               2
-               
-              of
+               of
                
               3
             </h2>
@@ -279,6 +281,7 @@ exports[`<Presenter /> should render timer when set in params. 1`] = `
                     key="1"
                     lastSlideIndex={undefined}
                     notes="These are my slide notes!!"
+                    presenter={true}
                     presenterStyle={
                       Object {
                         "position": "relative",
@@ -288,6 +291,8 @@ exports[`<Presenter /> should render timer when set in params. 1`] = `
                     slideIndex={1}
                     transition={Array []}
                     transitionDuration={0}
+                    transitionIn={Array []}
+                    transitionOut={Array []}
                   >
                     <div>
                       Slide Content
@@ -306,6 +311,7 @@ exports[`<Presenter /> should render timer when set in params. 1`] = `
                     hash={2}
                     key="2"
                     lastSlideIndex={undefined}
+                    presenter={true}
                     presenterStyle={
                       Object {
                         "position": "relative",
@@ -315,6 +321,8 @@ exports[`<Presenter /> should render timer when set in params. 1`] = `
                     slideIndex={2}
                     transition={Array []}
                     transitionDuration={0}
+                    transitionIn={Array []}
+                    transitionOut={Array []}
                   >
                     <div>
                       Slide Content
@@ -394,11 +402,9 @@ exports[`<Presenter /> should render with notes when slides have them. 1`] = `
             <h2
               className="css-1wa77gy"
             >
-              Slide
-               
+              Slide 
               2
-               
-              of
+               of
                
               3
             </h2>
@@ -445,6 +451,7 @@ exports[`<Presenter /> should render with notes when slides have them. 1`] = `
                     key="1"
                     lastSlideIndex={undefined}
                     notes="These are my slide notes!!"
+                    presenter={true}
                     presenterStyle={
                       Object {
                         "position": "relative",
@@ -454,6 +461,8 @@ exports[`<Presenter /> should render with notes when slides have them. 1`] = `
                     slideIndex={1}
                     transition={Array []}
                     transitionDuration={0}
+                    transitionIn={Array []}
+                    transitionOut={Array []}
                   >
                     <div>
                       Slide Content
@@ -472,6 +481,7 @@ exports[`<Presenter /> should render with notes when slides have them. 1`] = `
                     hash={2}
                     key="2"
                     lastSlideIndex={undefined}
+                    presenter={true}
                     presenterStyle={
                       Object {
                         "position": "relative",
@@ -481,6 +491,8 @@ exports[`<Presenter /> should render with notes when slides have them. 1`] = `
                     slideIndex={2}
                     transition={Array []}
                     transitionDuration={0}
+                    transitionIn={Array []}
+                    transitionOut={Array []}
                   >
                     <div>
                       Slide Content

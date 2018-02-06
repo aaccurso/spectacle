@@ -17,6 +17,11 @@ exports[`<Manager /> should render correctly. 1`] = `
     contentWidth={1000}
     controls={true}
     dispatch={[Function]}
+    fragment={
+      Object {
+        "fragments": Array [],
+      }
+    }
     globalStyles={true}
     progress="pacman"
     route={
@@ -38,241 +43,275 @@ exports[`<Manager /> should render correctly. 1`] = `
     }
     transitionDuration={500}
   >
-    <div
+    <Styled(div)
       className="spectacle-deck"
-      data-radium={true}
       onClick={[Function]}
       onTouchCancel={[Function]}
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      style={
+      route={
         Object {
-          "backgroundColor": "",
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
+          "params": Array [],
+          "slide": 0,
         }
       }
     >
-      <Controls
-        currentSlideIndex={0}
-        key=".0"
-        onNext={[Function]}
-        onPrev={[Function]}
-        totalSlides={2}
+      <div
+        className="spectacle-deck css-1w702dy"
+        onClick={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
       >
-        <div
-          data-radium={true}
+        <Controls
+          controlColor={null}
+          currentSlideIndex={0}
+          onNext={[Function]}
+          onPrev={[Function]}
+          totalSlides={2}
         >
-          <button
-            key=".$next"
+          <div>
+            <button
+              aria-label="Next slide"
+              key="next"
+              onClick={[Function]}
+              style={undefined}
+              type="button"
+            >
+              <svg
+                focusable="false"
+                height="32px"
+                key="nextIcon"
+                role="presentation"
+                style={undefined}
+                viewBox="0 0 512 828.586"
+                width="32px"
+              >
+                <path
+                  d="M97.707,0L0,97.707l316.586,316.586L0,730.88l97.707,97.706L512,414.293L97.707,0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </Controls>
+        <Styled(TransitionGroup)
+          component="div"
+        >
+          <TransitionGroup
+            childFactory={[Function]}
+            className="css-r8ywg3"
+            component="div"
+          >
+            <div
+              className="css-r8ywg3"
+            >
+              <MockSlide
+                dispatch={[Function]}
+                export={false}
+                fragments={
+                  Object {
+                    "fragments": Array [],
+                  }
+                }
+                hash={0}
+                key=".$.0"
+                lastSlideIndex={0}
+                print={false}
+                slideIndex={0}
+                slideReference={
+                  Array [
+                    Object {
+                      "id": 0,
+                      "rootIndex": 0,
+                    },
+                    Object {
+                      "id": 1,
+                      "rootIndex": 1,
+                    },
+                  ]
+                }
+                transition={
+                  Array [
+                    "zoom",
+                    "slide",
+                  ]
+                }
+                transitionDuration={500}
+              >
+                <div>
+                  Slide Content
+                </div>
+              </MockSlide>
+            </div>
+          </TransitionGroup>
+        </Styled(TransitionGroup)>
+        <Progress
+          currentSlideIndex={0}
+          items={
+            Array [
+              Object {
+                "id": 0,
+                "rootIndex": 0,
+              },
+              Object {
+                "id": 1,
+                "rootIndex": 1,
+              },
+            ]
+          }
+          progressColor={null}
+          type="pacman"
+        >
+          <Styled(div)
+            styles={
+              Array [
+                undefined,
+                null,
+              ]
+            }
+          >
+            <div
+              className="css-0"
+            >
+              <div>
+                <Styled(div)
+                  position={
+                    Object {
+                      "left": "-15px",
+                      "top": "-20px",
+                    }
+                  }
+                  styles={undefined}
+                >
+                  <div
+                    className="css-ro10dn"
+                  >
+                    <Styled(div)
+                      styles={
+                        Array [
+                          undefined,
+                          Object {
+                            "animation": "animation-vwhb3c 0.12s linear 10 alternate both",
+                          },
+                          null,
+                        ]
+                      }
+                    >
+                      <div
+                        className="css-1la23zo"
+                      />
+                    </Styled(div)>
+                    <Styled(div)
+                      styles={
+                        Array [
+                          undefined,
+                          Object {
+                            "animation": "animation-1p18wsg 0.12s linear 10 alternate both",
+                          },
+                          null,
+                        ]
+                      }
+                    >
+                      <div
+                        className="css-1yi33k2"
+                      />
+                    </Styled(div)>
+                  </div>
+                </Styled(div)>
+                <Styled(div)
+                  key="presentation-progress-0"
+                  position={
+                    Object {
+                      "left": "-15px",
+                      "opacity": 0,
+                      "top": "-20px",
+                    }
+                  }
+                  styles={
+                    Array [
+                      undefined,
+                      null,
+                    ]
+                  }
+                >
+                  <div
+                    className="css-16u37i9"
+                  />
+                </Styled(div)>
+                <Styled(div)
+                  key="presentation-progress-1"
+                  position={
+                    Object {
+                      "left": "5px",
+                      "top": "-20px",
+                    }
+                  }
+                  styles={
+                    Array [
+                      undefined,
+                      null,
+                    ]
+                  }
+                >
+                  <div
+                    className="css-1qz1mlg"
+                  />
+                </Styled(div)>
+              </div>
+            </div>
+          </Styled(div)>
+        </Progress>
+        <Fullscreen>
+          <Styled(FullscreenButton)
             onClick={[Function]}
             style={undefined}
-            type="button"
+            viewBox="0 0 512 512"
           >
-            <svg
-              height="32px"
-              key="nextIcon"
+            <FullscreenButton
+              className="css-12n5ud"
+              onClick={[Function]}
               style={undefined}
-              viewBox="0 0 512 828.586"
-              width="32px"
+              viewBox="0 0 512 512"
             >
-              <path
-                d="M97.707,0L0,97.707l316.586,316.586L0,730.88l97.707,97.706L512,414.293L97.707,0z"
-              />
-            </svg>
-          </button>
-        </div>
-      </Controls>
-      <TransitionGroup
-        childFactory={[Function]}
-        component="div"
-        key=".2"
-        style={
-          Array [
-            Object {
-              "height": "100%",
-              "perspective": 1000,
-              "transformStyle": "flat",
-              "width": "100%",
-            },
-          ]
-        }
-      >
-        <div
-          data-radium={true}
-          style={
-            Object {
-              "height": "100%",
-              "perspective": 1000,
-              "transformStyle": "flat",
-              "width": "100%",
-            }
-          }
-        >
-          <MockSlide
-            dispatch={[Function]}
-            export={false}
-            fragments={undefined}
-            hash={0}
-            key=".$.$0"
-            lastSlideIndex={0}
-            print={false}
-            slideIndex={0}
-            slideReference={
-              Array [
-                Object {
-                  "id": 0,
-                  "rootIndex": 0,
-                },
-                Object {
-                  "id": 1,
-                  "rootIndex": 1,
-                },
-              ]
-            }
-            transition={
-              Array [
-                "zoom",
-                "slide",
-              ]
-            }
-            transitionDuration={500}
-          >
-            <div>
-              Slide Content
-            </div>
-          </MockSlide>
-        </div>
-      </TransitionGroup>
-      <Progress
-        currentSlideIndex={0}
-        items={
-          Array [
-            Object {
-              "id": 0,
-              "rootIndex": 0,
-            },
-            Object {
-              "id": 1,
-              "rootIndex": 1,
-            },
-          ]
-        }
-        key=".3"
-        type="pacman"
-      >
-        <div
-          data-radium={true}
-          style={Object {}}
-        >
-          <div
-            data-radium={true}
-          >
-            <div
-              data-radium={true}
-              key=".0"
-              style={
-                Object {
-                  "left": "-15px",
-                  "top": "-20px",
-                }
-              }
-            >
-              <div
-                data-radium={true}
-                key=".0"
-                style={
-                  Object {
-                    "animation": "pacmanTopFramesBis 0.12s linear 10 alternate both",
-                  }
-                }
-              />
-              <div
-                data-radium={true}
-                key=".1"
-                style={
-                  Object {
-                    "animation": "pacmanBottomFramesBis 0.12s linear 10 alternate both",
-                  }
-                }
-              />
-            </div>
-            <div
-              data-radium={true}
-              key=".1:$presentation-progress-0"
-              style={
-                Object {
-                  "left": "-15px",
-                  "opacity": 0,
-                  "top": "-20px",
-                }
-              }
-            />
-            <div
-              data-radium={true}
-              key=".1:$presentation-progress-1"
-              style={
-                Object {
-                  "left": "5px",
-                  "top": "-20px",
-                }
-              }
-            />
-          </div>
-        </div>
-      </Progress>
-      <Fullscreen
-        key=".4"
-      >
-        <svg
-          data-radium={true}
-          height="30px"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          style={
-            Object {
-              "bottom": 20,
-              "cursor": "pointer",
-              "opacity": 0,
-              "position": "absolute",
-              "right": 20,
-              "transition": "300ms opacity ease",
-            }
-          }
-          viewBox="0 0 512 512"
-          width="30px"
-        >
-          <path
-            d="M73.143,329.143H0V512h182.857v-73.143H73.143V329.143z M0,182.857h73.143V73.143h109.715V0H0V182.857z M438.857,438.857 H329.143V512H512V329.143h-73.143V438.857z M329.143,0v73.143h109.715v109.715H512V0H329.143z"
-          />
-        </svg>
-      </Fullscreen>
-      <Style
-        key=".6"
-        rules={
-          Object {
-            ".spectacle-presenter-next .fragment": Object {
-              "display": "none !important",
-            },
-            "body": Array [],
-          }
-        }
-        scopeSelector=""
-      >
+              <Styled(button)
+                className="css-12n5ud"
+                onClick={[Function]}
+                style={undefined}
+                viewBox="0 0 512 512"
+              >
+                <button
+                  className="css-1hv29sw"
+                  onClick={[Function]}
+                  style={undefined}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </Styled(button)>
+            </FullscreenButton>
+          </Styled(FullscreenButton)>
+        </Fullscreen>
         <style
           dangerouslySetInnerHTML={
             Object {
-              "__html": "body{}.spectacle-presenter-next .fragment{display: none !important;}",
+              "__html": "body { } .spectacle-presenter-next .fragment { display: none !important} ",
             }
           }
         />
-      </Style>
-    </div>
+      </div>
+    </Styled(div)>
   </Manager>
 </Connect(Manager)>
 `;
@@ -286,6 +325,11 @@ exports[`<Manager /> should render the export configuration when specified. 1`] 
     contentWidth={1000}
     controls={true}
     dispatch={[Function]}
+    fragment={
+      Object {
+        "fragments": Array [],
+      }
+    }
     globalStyles={true}
     progress="pacman"
     route={
@@ -304,108 +348,102 @@ exports[`<Manager /> should render the export configuration when specified. 1`] 
     transition={Array []}
     transitionDuration={500}
   >
-    <div
+    <Styled(div)
       className="spectacle-deck"
-      data-radium={true}
       onClick={[Function]}
       onTouchCancel={[Function]}
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      style={
+      route={
         Object {
-          "backgroundColor": "",
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
+          "params": Array [
+            "export",
+          ],
+          "slide": 0,
         }
       }
     >
-      <Export
-        key=".2"
-        route={
-          Object {
-            "params": Array [
-              "export",
-            ],
-            "slide": 0,
-          }
-        }
-        slideReference={
-          Array [
-            Object {
-              "id": 0,
-              "rootIndex": 0,
-            },
-            Object {
-              "id": 1,
-              "rootIndex": 1,
-            },
-          ]
-        }
-        slides={
-          Array [
-            <MockSlide />,
-            <MockSlide />,
-          ]
-        }
+      <div
+        className="spectacle-deck css-1w702dy"
+        onClick={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
       >
-        <Styled(div)>
-          <div
-            className="css-v2kfba"
-          >
-            <MockSlide
-              export={true}
-              key=".$0"
-              print={false}
-              slideIndex={0}
-              transition={Array []}
-              transitionDuration={0}
-            >
-              <div>
-                Slide Content
-              </div>
-            </MockSlide>
-            <MockSlide
-              export={true}
-              key=".$1"
-              print={false}
-              slideIndex={1}
-              transition={Array []}
-              transitionDuration={0}
-            >
-              <div>
-                Slide Content
-              </div>
-            </MockSlide>
-          </div>
-        </Styled(div)>
-      </Export>
-      <Style
-        key=".6"
-        rules={
-          Object {
-            ".spectacle-presenter-next .fragment": Object {
-              "display": "none !important",
-            },
-            "body": Array [],
+        <Export
+          route={
+            Object {
+              "params": Array [
+                "export",
+              ],
+              "slide": 0,
+            }
           }
-        }
-        scopeSelector=""
-      >
+          slideReference={
+            Array [
+              Object {
+                "id": 0,
+                "rootIndex": 0,
+              },
+              Object {
+                "id": 1,
+                "rootIndex": 1,
+              },
+            ]
+          }
+          slides={
+            Array [
+              <MockSlide />,
+              <MockSlide />,
+            ]
+          }
+        >
+          <Styled(div)>
+            <div
+              className="css-v2kfba"
+            >
+              <MockSlide
+                export={true}
+                key="0"
+                print={false}
+                slideIndex={0}
+                transition={Array []}
+                transitionDuration={0}
+                transitionIn={Array []}
+                transitionOut={Array []}
+              >
+                <div>
+                  Slide Content
+                </div>
+              </MockSlide>
+              <MockSlide
+                export={true}
+                key="1"
+                print={false}
+                slideIndex={1}
+                transition={Array []}
+                transitionDuration={0}
+                transitionIn={Array []}
+                transitionOut={Array []}
+              >
+                <div>
+                  Slide Content
+                </div>
+              </MockSlide>
+            </div>
+          </Styled(div)>
+        </Export>
         <style
           dangerouslySetInnerHTML={
             Object {
-              "__html": "body{min-width: 1150px;
-            min-height: 850px;
-            overflow: auto;}.spectacle-presenter-next .fragment{display: none !important;}",
+              "__html": "body { min-width: 1150px; min-height: 850px; overflow: auto} .spectacle-presenter-next .fragment { display: none !important} ",
             }
           }
         />
-      </Style>
-    </div>
+      </div>
+    </Styled(div)>
   </Manager>
 </Connect(Manager)>
 `;
@@ -419,6 +457,11 @@ exports[`<Manager /> should render the overview configuration when specified. 1`
     contentWidth={1000}
     controls={true}
     dispatch={[Function]}
+    fragment={
+      Object {
+        "fragments": Array [],
+      }
+    }
     globalStyles={true}
     progress="pacman"
     route={
@@ -437,162 +480,167 @@ exports[`<Manager /> should render the overview configuration when specified. 1`
     transition={Array []}
     transitionDuration={500}
   >
-    <div
+    <Styled(div)
       className="spectacle-deck"
-      data-radium={true}
       onClick={[Function]}
       onTouchCancel={[Function]}
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      style={
+      route={
         Object {
-          "backgroundColor": "black",
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
+          "params": Array [
+            "overview",
+          ],
+          "slide": 0,
         }
       }
     >
-      <Overview
-        key=".2"
-        route={
-          Object {
-            "params": Array [
-              "overview",
-            ],
-            "slide": 0,
-          }
-        }
-        slideIndex={0}
-        slideReference={
-          Array [
-            Object {
-              "id": 0,
-              "rootIndex": 0,
-            },
-            Object {
-              "id": 1,
-              "rootIndex": 1,
-            },
-          ]
-        }
-        slides={
-          Array [
-            <MockSlide />,
-            <MockSlide />,
-          ]
-        }
+      <div
+        className="spectacle-deck css-1pplrs6"
+        onClick={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
       >
-        <Styled(div)>
-          <div
-            className="css-gv2ckq"
-          >
-            <Styled(div)
-              index={0}
-              key="0"
-              onClick={[Function]}
-              screen={0}
-              slideIndex={0}
-            >
-              <div
-                className="css-13mtebb"
-                onClick={[Function]}
-              >
-                <MockSlide
-                  appearOff={true}
-                  export={false}
-                  key="0"
-                  print={false}
-                  slideIndex={0}
-                  transition={Array []}
-                  transitionDuration={0}
-                >
-                  <div>
-                    Slide Content
-                  </div>
-                </MockSlide>
-              </div>
-            </Styled(div)>
-            <Styled(div)
-              index={1}
-              key="1"
-              onClick={[Function]}
-              screen={0}
-              slideIndex={0}
-            >
-              <div
-                className="css-13d6elb"
-                onClick={[Function]}
-              >
-                <MockSlide
-                  appearOff={true}
-                  export={false}
-                  key="1"
-                  print={false}
-                  slideIndex={1}
-                  transition={Array []}
-                  transitionDuration={0}
-                >
-                  <div>
-                    Slide Content
-                  </div>
-                </MockSlide>
-              </div>
-            </Styled(div)>
-          </div>
-        </Styled(div)>
-      </Overview>
-      <Fullscreen
-        key=".4"
-      >
-        <svg
-          data-radium={true}
-          height="30px"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          style={
+        <Overview
+          route={
             Object {
-              "bottom": 20,
-              "cursor": "pointer",
-              "opacity": 0,
-              "position": "absolute",
-              "right": 20,
-              "transition": "300ms opacity ease",
+              "params": Array [
+                "overview",
+              ],
+              "slide": 0,
             }
           }
-          viewBox="0 0 512 512"
-          width="30px"
-        >
-          <path
-            d="M73.143,329.143H0V512h182.857v-73.143H73.143V329.143z M0,182.857h73.143V73.143h109.715V0H0V182.857z M438.857,438.857 H329.143V512H512V329.143h-73.143V438.857z M329.143,0v73.143h109.715v109.715H512V0H329.143z"
-          />
-        </svg>
-      </Fullscreen>
-      <Style
-        key=".6"
-        rules={
-          Object {
-            ".spectacle-presenter-next .fragment": Object {
-              "display": "none !important",
-            },
-            "body": Array [],
+          slideIndex={0}
+          slideReference={
+            Array [
+              Object {
+                "id": 0,
+                "rootIndex": 0,
+              },
+              Object {
+                "id": 1,
+                "rootIndex": 1,
+              },
+            ]
           }
-        }
-        scopeSelector=""
-      >
+          slides={
+            Array [
+              <MockSlide />,
+              <MockSlide />,
+            ]
+          }
+        >
+          <Styled(div)>
+            <div
+              className="css-gv2ckq"
+            >
+              <Styled(div)
+                index={0}
+                key="0"
+                onClick={[Function]}
+                screen={0}
+                slideIndex={0}
+              >
+                <div
+                  className="css-13mtebb"
+                  onClick={[Function]}
+                >
+                  <MockSlide
+                    appearOff={true}
+                    export={false}
+                    key="0"
+                    print={false}
+                    slideIndex={0}
+                    transition={Array []}
+                    transitionDuration={0}
+                  >
+                    <div>
+                      Slide Content
+                    </div>
+                  </MockSlide>
+                </div>
+              </Styled(div)>
+              <Styled(div)
+                index={1}
+                key="1"
+                onClick={[Function]}
+                screen={0}
+                slideIndex={0}
+              >
+                <div
+                  className="css-13d6elb"
+                  onClick={[Function]}
+                >
+                  <MockSlide
+                    appearOff={true}
+                    export={false}
+                    key="1"
+                    print={false}
+                    slideIndex={1}
+                    transition={Array []}
+                    transitionDuration={0}
+                  >
+                    <div>
+                      Slide Content
+                    </div>
+                  </MockSlide>
+                </div>
+              </Styled(div)>
+            </div>
+          </Styled(div)>
+        </Overview>
+        <Fullscreen>
+          <Styled(FullscreenButton)
+            onClick={[Function]}
+            style={undefined}
+            viewBox="0 0 512 512"
+          >
+            <FullscreenButton
+              className="css-12n5ud"
+              onClick={[Function]}
+              style={undefined}
+              viewBox="0 0 512 512"
+            >
+              <Styled(button)
+                className="css-12n5ud"
+                onClick={[Function]}
+                style={undefined}
+                viewBox="0 0 512 512"
+              >
+                <button
+                  className="css-1hv29sw"
+                  onClick={[Function]}
+                  style={undefined}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </Styled(button)>
+            </FullscreenButton>
+          </Styled(FullscreenButton)>
+        </Fullscreen>
         <style
           dangerouslySetInnerHTML={
             Object {
-              "__html": "body{}.spectacle-presenter-next .fragment{display: none !important;}",
+              "__html": "body { } .spectacle-presenter-next .fragment { display: none !important} ",
             }
           }
         />
-      </Style>
-    </div>
+      </div>
+    </Styled(div)>
   </Manager>
 </Connect(Manager)>
 `;
@@ -606,6 +654,11 @@ exports[`<Manager /> should render with slideset slides 1`] = `
     contentWidth={1000}
     controls={true}
     dispatch={[Function]}
+    fragment={
+      Object {
+        "fragments": Array [],
+      }
+    }
     globalStyles={true}
     progress="pacman"
     route={
@@ -622,277 +675,323 @@ exports[`<Manager /> should render with slideset slides 1`] = `
     transition={Array []}
     transitionDuration={500}
   >
-    <div
+    <Styled(div)
       className="spectacle-deck"
-      data-radium={true}
       onClick={[Function]}
       onTouchCancel={[Function]}
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
-      style={
+      route={
         Object {
-          "backgroundColor": "",
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
+          "params": Array [],
+          "slide": 1,
         }
       }
     >
-      <Controls
-        currentSlideIndex={1}
-        key=".0"
-        onNext={[Function]}
-        onPrev={[Function]}
-        totalSlides={3}
+      <div
+        className="spectacle-deck css-1w702dy"
+        onClick={[Function]}
+        onTouchCancel={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
       >
-        <div
-          data-radium={true}
+        <Controls
+          controlColor={null}
+          currentSlideIndex={1}
+          onNext={[Function]}
+          onPrev={[Function]}
+          totalSlides={3}
         >
-          <button
-            key=".$prev"
-            onClick={[Function]}
-            style={undefined}
-            type="button"
-          >
-            <svg
-              height="32px"
-              key="prevIcon"
+          <div>
+            <button
+              aria-label="Previous slide"
+              key="prev"
+              onClick={[Function]}
               style={undefined}
-              viewBox="0 0 512 828.586"
-              width="32px"
+              type="button"
             >
-              <path
-                d="M512,97.707L414.293,0L0,414.293l414.293,414.293L512,730.88L195.414,414.293L512,97.707z"
-              />
-            </svg>
-          </button>
-          <button
-            key=".$next"
-            onClick={[Function]}
-            style={undefined}
-            type="button"
-          >
-            <svg
-              height="32px"
-              key="nextIcon"
+              <svg
+                focusable="false"
+                height="32px"
+                key="prevIcon"
+                role="presentation"
+                style={undefined}
+                viewBox="0 0 512 828.586"
+                width="32px"
+              >
+                <path
+                  d="M512,97.707L414.293,0L0,414.293l414.293,414.293L512,730.88L195.414,414.293L512,97.707z"
+                />
+              </svg>
+            </button>
+            <button
+              aria-label="Next slide"
+              key="next"
+              onClick={[Function]}
               style={undefined}
-              viewBox="0 0 512 828.586"
-              width="32px"
+              type="button"
             >
-              <path
-                d="M97.707,0L0,97.707l316.586,316.586L0,730.88l97.707,97.706L512,414.293L97.707,0z"
-              />
-            </svg>
-          </button>
-        </div>
-      </Controls>
-      <TransitionGroup
-        childFactory={[Function]}
-        component="div"
-        key=".2"
-        style={
-          Array [
-            Object {
-              "height": "100%",
-              "perspective": 1000,
-              "transformStyle": "flat",
-              "width": "100%",
-            },
-          ]
-        }
-      >
-        <div
-          data-radium={true}
-          style={
-            Object {
-              "height": "100%",
-              "perspective": 1000,
-              "transformStyle": "flat",
-              "width": "100%",
-            }
+              <svg
+                focusable="false"
+                height="32px"
+                key="nextIcon"
+                role="presentation"
+                style={undefined}
+                viewBox="0 0 512 828.586"
+                width="32px"
+              >
+                <path
+                  d="M97.707,0L0,97.707l316.586,316.586L0,730.88l97.707,97.706L512,414.293L97.707,0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </Controls>
+        <Styled(TransitionGroup)
+          component="div"
+        >
+          <TransitionGroup
+            childFactory={[Function]}
+            className="css-r8ywg3"
+            component="div"
+          >
+            <div
+              className="css-r8ywg3"
+            >
+              <MockSlide
+                dispatch={[Function]}
+                export={false}
+                fragments={
+                  Object {
+                    "fragments": Array [],
+                  }
+                }
+                hash={1}
+                key=".$.0"
+                lastSlideIndex={1}
+                print={false}
+                slideIndex={1}
+                slideReference={
+                  Array [
+                    Object {
+                      "id": 0,
+                      "rootIndex": 0,
+                    },
+                    Object {
+                      "id": 1,
+                      "rootIndex": 1,
+                      "setIndex": 0,
+                    },
+                    Object {
+                      "id": 2,
+                      "rootIndex": 1,
+                      "setIndex": 1,
+                    },
+                  ]
+                }
+                transition={Array []}
+                transitionDuration={500}
+              >
+                <div>
+                  Slide Content
+                </div>
+              </MockSlide>
+            </div>
+          </TransitionGroup>
+        </Styled(TransitionGroup)>
+        <Progress
+          currentSlideIndex={1}
+          items={
+            Array [
+              Object {
+                "id": 0,
+                "rootIndex": 0,
+              },
+              Object {
+                "id": 1,
+                "rootIndex": 1,
+                "setIndex": 0,
+              },
+              Object {
+                "id": 2,
+                "rootIndex": 1,
+                "setIndex": 1,
+              },
+            ]
           }
+          progressColor={null}
+          type="pacman"
         >
-          <MockSlide
-            dispatch={[Function]}
-            export={false}
-            fragments={undefined}
-            hash={1}
-            key=".$.$1"
-            lastSlideIndex={1}
-            print={false}
-            slideIndex={1}
-            slideReference={
+          <Styled(div)
+            styles={
               Array [
-                Object {
-                  "id": 0,
-                  "rootIndex": 0,
-                },
-                Object {
-                  "id": 1,
-                  "rootIndex": 1,
-                  "setIndex": 0,
-                },
-                Object {
-                  "id": 2,
-                  "rootIndex": 1,
-                  "setIndex": 1,
-                },
+                undefined,
+                null,
               ]
             }
-            transition={Array []}
-            transitionDuration={500}
-          >
-            <div>
-              Slide Content
-            </div>
-          </MockSlide>
-        </div>
-      </TransitionGroup>
-      <Progress
-        currentSlideIndex={1}
-        items={
-          Array [
-            Object {
-              "id": 0,
-              "rootIndex": 0,
-            },
-            Object {
-              "id": 1,
-              "rootIndex": 1,
-              "setIndex": 0,
-            },
-            Object {
-              "id": 2,
-              "rootIndex": 1,
-              "setIndex": 1,
-            },
-          ]
-        }
-        key=".3"
-        type="pacman"
-      >
-        <div
-          data-radium={true}
-          style={Object {}}
-        >
-          <div
-            data-radium={true}
           >
             <div
-              data-radium={true}
-              key=".0"
-              style={
-                Object {
-                  "left": "-5px",
-                  "top": "-20px",
-                }
-              }
+              className="css-0"
             >
-              <div
-                data-radium={true}
-                key=".0"
-                style={
-                  Object {
-                    "animation": "pacmanTopFrames 0.12s linear 10 alternate both",
+              <div>
+                <Styled(div)
+                  position={
+                    Object {
+                      "left": "-5px",
+                      "top": "-20px",
+                    }
                   }
-                }
-              />
-              <div
-                data-radium={true}
-                key=".1"
-                style={
-                  Object {
-                    "animation": "pacmanBottomFrames 0.12s linear 10 alternate both",
+                  styles={undefined}
+                >
+                  <div
+                    className="css-p4obic"
+                  >
+                    <Styled(div)
+                      styles={
+                        Array [
+                          undefined,
+                          Object {
+                            "animation": "animation-v6s9vi 0.12s linear 10 alternate both",
+                          },
+                          null,
+                        ]
+                      }
+                    >
+                      <div
+                        className="css-172vklz"
+                      />
+                    </Styled(div)>
+                    <Styled(div)
+                      styles={
+                        Array [
+                          undefined,
+                          Object {
+                            "animation": "animation-9hbgqx 0.12s linear 10 alternate both",
+                          },
+                          null,
+                        ]
+                      }
+                    >
+                      <div
+                        className="css-5id854"
+                      />
+                    </Styled(div)>
+                  </div>
+                </Styled(div)>
+                <Styled(div)
+                  key="presentation-progress-0"
+                  position={
+                    Object {
+                      "left": "-25px",
+                      "opacity": 0,
+                      "top": "-20px",
+                    }
                   }
-                }
-              />
+                  styles={
+                    Array [
+                      undefined,
+                      null,
+                    ]
+                  }
+                >
+                  <div
+                    className="css-1xucvt"
+                  />
+                </Styled(div)>
+                <Styled(div)
+                  key="presentation-progress-1"
+                  position={
+                    Object {
+                      "left": "-5px",
+                      "opacity": 0,
+                      "top": "-20px",
+                    }
+                  }
+                  styles={
+                    Array [
+                      undefined,
+                      null,
+                    ]
+                  }
+                >
+                  <div
+                    className="css-ci3gz3"
+                  />
+                </Styled(div)>
+                <Styled(div)
+                  key="presentation-progress-2"
+                  position={
+                    Object {
+                      "left": "15px",
+                      "top": "-20px",
+                    }
+                  }
+                  styles={
+                    Array [
+                      undefined,
+                      null,
+                    ]
+                  }
+                >
+                  <div
+                    className="css-tyaqbb"
+                  />
+                </Styled(div)>
+              </div>
             </div>
-            <div
-              data-radium={true}
-              key=".1:$presentation-progress-0"
-              style={
-                Object {
-                  "left": "-25px",
-                  "opacity": 0,
-                  "top": "-20px",
-                }
-              }
-            />
-            <div
-              data-radium={true}
-              key=".1:$presentation-progress-1"
-              style={
-                Object {
-                  "left": "-5px",
-                  "opacity": 0,
-                  "top": "-20px",
-                }
-              }
-            />
-            <div
-              data-radium={true}
-              key=".1:$presentation-progress-2"
-              style={
-                Object {
-                  "left": "15px",
-                  "top": "-20px",
-                }
-              }
-            />
-          </div>
-        </div>
-      </Progress>
-      <Fullscreen
-        key=".4"
-      >
-        <svg
-          data-radium={true}
-          height="30px"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-          style={
-            Object {
-              "bottom": 20,
-              "cursor": "pointer",
-              "opacity": 0,
-              "position": "absolute",
-              "right": 20,
-              "transition": "300ms opacity ease",
-            }
-          }
-          viewBox="0 0 512 512"
-          width="30px"
-        >
-          <path
-            d="M73.143,329.143H0V512h182.857v-73.143H73.143V329.143z M0,182.857h73.143V73.143h109.715V0H0V182.857z M438.857,438.857 H329.143V512H512V329.143h-73.143V438.857z M329.143,0v73.143h109.715v109.715H512V0H329.143z"
-          />
-        </svg>
-      </Fullscreen>
-      <Style
-        key=".6"
-        rules={
-          Object {
-            ".spectacle-presenter-next .fragment": Object {
-              "display": "none !important",
-            },
-            "body": Array [],
-          }
-        }
-        scopeSelector=""
-      >
+          </Styled(div)>
+        </Progress>
+        <Fullscreen>
+          <Styled(FullscreenButton)
+            onClick={[Function]}
+            style={undefined}
+            viewBox="0 0 512 512"
+          >
+            <FullscreenButton
+              className="css-12n5ud"
+              onClick={[Function]}
+              style={undefined}
+              viewBox="0 0 512 512"
+            >
+              <Styled(button)
+                className="css-12n5ud"
+                onClick={[Function]}
+                style={undefined}
+                viewBox="0 0 512 512"
+              >
+                <button
+                  className="css-1hv29sw"
+                  onClick={[Function]}
+                  style={undefined}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M0 0h24v24H0z"
+                      fill="none"
+                    />
+                    <path
+                      d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </Styled(button)>
+            </FullscreenButton>
+          </Styled(FullscreenButton)>
+        </Fullscreen>
         <style
           dangerouslySetInnerHTML={
             Object {
-              "__html": "body{}.spectacle-presenter-next .fragment{display: none !important;}",
+              "__html": "body { } .spectacle-presenter-next .fragment { display: none !important} ",
             }
           }
         />
-      </Style>
-    </div>
+      </div>
+    </Styled(div)>
   </Manager>
 </Connect(Manager)>
 `;
